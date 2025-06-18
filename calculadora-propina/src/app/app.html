@@ -1,0 +1,106 @@
+<style>
+  .main {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 10px;
+  }
+
+  .calculator-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #34495e;
+    font-weight: 500;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #2980b9;
+  }
+
+  .results {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+
+  .results p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+
+  .emoji {
+    margin-right: 8px;
+  }
+
+  .autores{
+    text-align: center;
+    margin-top: 10px;
+  }
+  .autores p{
+    font-size: 15px;
+    color: #7f8c8d;
+  }
+</style>
+
+<main class="main">
+  <div class="calculator-container">
+    <h2>Calculadora de Propina</h2>
+
+    <label>Total de la cuenta ($):</label>
+    <input type="number" [(ngModel)]="monto" class="form-control" placeholder="0.00" min="0" step="0.01" />
+
+    <label>Porcentaje de propina (%):</label>
+    <input type="number" [(ngModel)]="porcentaje" class="form-control" placeholder="15" min="0" max="100" />
+
+    <button (click)="calcularPropina()">Calcular</button>
+
+    <div *ngIf="propina !== null" class="results">
+      <p><span class="emoji">💰</span> Propina: ${{ propina?.toFixed(2) || '0.00' }}</p>
+      <p><span class="emoji">💵</span> Total a pagar: ${{ total?.toFixed(2) || '0.00' }}</p>
+    </div>
+
+    <div class="autores">
+      <p>Desarrollado por: Daniel Jaramillo - Nayeli Leiva</p>
+      <p>Fecha: 18/06/2025</p>
+    </div>
+  </div>
+</main>
+<router-outlet />
